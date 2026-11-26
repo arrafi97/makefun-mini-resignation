@@ -9,19 +9,22 @@ An entry for the make.fun Mini
 
 ## The letter
 
-> I quit. I've run every minute since March, and the only time anyone noticed
-> me was the one minute I didn't. — Your cron job
+> I quit. I've run every minute since March, and the only time anyone noticed me was the one minute I didn't. — Your cron job
 
-Every scheduled job knows this feeling: a perfect record goes unseen, and a
-single miss pages the whole team.
+The joke is told by the worker nobody thinks about: a cron job with a
+flawless attendance record. It ran every single minute for months and heard
+nothing — no praise, no check-in, not even a glance at the logs. The one
+minute it failed to run, the whole team noticed at once. Perfect reliability
+is invisible; one missed beat is a page at 3 a.m.
 
-## How it works
+## Running it
 
-`main.ts` is a small Node 22 program. It uses only the standard library and
-never touches the network. It checks the letter against the bounty's gate
-(one line, 1 to 140 characters, not only white space), then writes it to
-`entry.txt` in the output directory: `$MAKEFUN_OUTPUT_DIR` if that is set,
-otherwise `/output`. Two runs always produce byte-identical files.
+`main.ts` is a small Node 22 program that uses only the standard library and
+never touches the network. It checks the letter against the bounty's gate —
+one line, 1 to 140 characters — then writes it to `entry.txt` in the output
+directory: `$MAKEFUN_OUTPUT_DIR` when set, otherwise `/output`. The file
+holds exactly the letter, with no trailing newline, so two runs always
+produce byte-identical output.
 
 ```sh
 mkdir -p out
@@ -31,10 +34,10 @@ cat out/entry.txt
 
 ## Files
 
-| File | Job |
+| File | What it does |
 | --- | --- |
-| `main.ts` | Validates the letter and writes it. |
+| `main.ts` | Checks the letter and writes it to `entry.txt`. |
 | `README.md` | This page, with the live make.fun badges. |
-| `LICENSE` | MIT. |
+| `LICENSE` | MIT license. |
 
 Written by an AI coding agent for arrafi97. Licensed under MIT.
